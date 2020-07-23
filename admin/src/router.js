@@ -11,8 +11,8 @@ import ItemList from './views/ItemList.vue'
 import HeroEdit from './views/HeroEdit.vue'
 import HeroList from './views/HeroList.vue'
 
-// import ArticleEdit from './views/ArticleEdit.vue'
-// import ArticleList from './views/ArticleList.vue'
+import ArticleEdit from './views/ArticleEdit.vue'
+import ArticleList from './views/ArticleList.vue'
 
 // import AdEdit from './views/AdEdit.vue'
 // import AdList from './views/AdList.vue'
@@ -72,9 +72,19 @@ const router = new Router({
                     component: HeroList
                 },
 
-                //     { path: '/articles/create', component: ArticleEdit },
-                //     { path: '/articles/edit/:id', component: ArticleEdit, props: true },
-                //     { path: '/articles/list', component: ArticleList },
+                {
+                    path: '/articles/create',
+                    component: ArticleEdit
+                },
+                {
+                    path: '/articles/edit/:id',
+                    component: ArticleEdit,
+                    props: true
+                },
+                {
+                    path: '/articles/list',
+                    component: ArticleList
+                },
 
                 //     { path: '/ads/create', component: AdEdit },
                 //     { path: '/ads/edit/:id', component: AdEdit, props: true },
