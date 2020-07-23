@@ -39,9 +39,9 @@ module.exports = app => {
         res.send(model)
     })
     // 登录校验中间件
-    // const authMiddleware = require('../../middleware/auth')
+    const authMiddleware = require('../../middleware/auth')
     const resourceMiddleware = require('../../middleware/resource')
-    app.use('/admin/api/rest/:resource', resourceMiddleware(), router)
+    app.use('/admin/api/rest/:resource', authMiddleware(), resourceMiddleware(), router)
 
     //图片上传
     const multer = require('multer')
@@ -57,7 +57,7 @@ module.exports = app => {
         //         }
         //     })
     })
-    app.post('/admin/api/upload', upload.single('file'), async (req, res) => {
+    app.post('/admin/api/upload', authMiddleware(), upload.single('file'), async (req, res) => {
         const file = req.file
         file.url = `http://localhost:3000/uploads/${file.filename}`
         res.send(file)
@@ -86,11 +86,11 @@ module.exports = app => {
         })
     })
 
-    // // 错误处理函数
-    // app.use(async (err, req, res, next) => {
-    //     // console.log(err)
-    //     res.status(err.statusCode || 500).send({
-    //         message: err.message
-    //     })
-    // })
+    // 错误处理函数
+    app.use(async (err, req, res, next) => {
+        // console.log(err)
+        res.status(err.statusCode || 500).send({
+            message: err.message
+        })
+    })
 }
