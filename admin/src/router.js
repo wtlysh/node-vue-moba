@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Login from './views/Login.vue'
+import Login from './views/Login.vue'
 import Main from './views/Main.vue'
 import CategoryEdit from './views/CategoryEdit.vue'
 import CategoryList from './views/CategoryList.vue'
@@ -24,8 +24,14 @@ import AdminUserList from './views/AdminUserList.vue'
 Vue.use(Router)
 
 const router = new Router({
-    routes: [
-        // { path: '/login', name: 'login', component: Login, meta: { isPublic: true } },
+    routes: [{
+            path: '/login',
+            name: 'login',
+            component: Login,
+            meta: {
+                isPublic: true
+            }
+        },
         {
             path: '/',
             name: 'main',
