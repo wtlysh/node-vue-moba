@@ -8,7 +8,7 @@ const schema = new mongoose.Schema({
         type: String,
         select: false,
         set(val) {
-            return require('bcrypt').hashSync(val, 10)//散列
+            return require('bcrypt').hashSync(val, 10) //散列加密
         }
     },
 })
