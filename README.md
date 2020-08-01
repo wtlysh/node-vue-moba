@@ -18,7 +18,7 @@ git push 推送
 开发 server  
 初始化 npm init -y   
 
-## 二、 管理后台
+### 二、 管理后台
 
 1. Element UI搭建后台管理基础界面  
 添加element ：npm install Element UI    
