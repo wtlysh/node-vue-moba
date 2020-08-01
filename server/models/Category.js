@@ -17,11 +17,11 @@ schema.virtual('children', {
     ref: 'Category'
 })
 
-// schema.virtual('newsList', {
-//     localField: '_id',
-//     foreignField: 'categories',
-//     justOne: false,
-//     ref: 'Article'
-// })
+schema.virtual('newsList', {
+    localField: '_id',
+    foreignField: 'categories',
+    justOne: false,
+    ref: 'Article'
+})
 
 module.exports = mongoose.model('Category', schema)
