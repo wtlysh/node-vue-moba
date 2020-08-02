@@ -63,7 +63,15 @@ __dirname  绝对地址
 技能编辑  
 
 7.  文章管理  
-富文本编辑器 (quill)用vue2-editor 
+富文本编辑器 (quill)用vue2-editor   
+```
+<el-form-item label="详情">
+        <vue-editor v-model="model.body" 
+        useCustomImageHandler 
+        @imageAdded="handleImageAdded">
+        </vue-editor>
+</el-form-item>
+```
 
 8.  首页广告管理
 
@@ -89,9 +97,22 @@ app.set('secret', 'i2u34y12oi3u4y8')(自己随便设置)
 
 11. 服务端登录校验  
 http-assert  判断存在，确保正确      
-npm i http-assert 
+npm i http-assert   
+```
+const isValid = require('bcrypt').compareSync(password, user.password)
+assert(isValid, 422, '密码错误')
+ ```
 
 12. 客户端路由限制 (beforeEach, meta)
+```
+  meta: {isPublic: true}
+  router.beforeEach((to, from, next) => {
+    if (!to.meta.isPublic && !localStorage.token) {
+        return next('/login')
+    }
+    next()
+})
+```
 
 13. 上传文件的登录校验 (el-upload, headers)
 ```Vue.mixin({
@@ -169,7 +190,7 @@ module.exports = {
 安装remote-ssh插件  
 [ngnx免费配置网站]( https://www.digitalocean.com/community/tools/nginx#?)  
 
-3. MongoDB数据库的安装和配置
+3.安装和配置 MongoDB数据库
 
 4. git 安装、配置ssh-key
 
